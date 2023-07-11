@@ -1,54 +1,47 @@
-Package: colino
 Type: Package
+Package: colino
 Title: Recipes Steps for Supervised Filter-Based Feature Selection
 Version: 0.0.1
-Authors@R: 
-    c(person(given = "Steven",
-           family = "Pawley",
-           role = c("aut", "cre"),
-           email = "dr.stevenpawley@gmail.com"),
-    person(given = "Max",
-           family = "Kuhn",
-           role = c("aut"),
-           email = "max@rstudio.com"),
-    person(given = "Rowan",
-           family = "Jacques-Hamilton",
-           role = c("aut"),
-           email = "rowan.jacques.hamilton@gmail.com"))
+Authors@R: c(
+    person("Steven", "Pawley", , "dr.stevenpawley@gmail.com", role = c("aut", "cre")),
+    person("Max", "Kuhn", , "max@rstudio.com", role = "aut", comment = c(ORCID = "0000-0003-2402-136X")),
+    person("Rowan", "Jacques-Hamilton", , "rowan.jacques.hamilton@gmail.com", role = "aut")
+  )
 Maintainer: Steven Pawley <dr.stevenpawley@gmail.com>
-Description: Provides supervised selection methods to be used as preprocessing 
-    steps alongside the 'recipes' package. These steps represent filter-based
-    methods where the features are ranked according to the feature selection 
-    method and a subset of features are retained.
+Description: Provides supervised selection methods to be used as
+    preprocessing steps alongside the 'recipes' package. These steps
+    represent filter-based methods where the features are ranked according
+    to the feature selection method and a subset of features are retained.
 License: MIT + file LICENSE
-Encoding: UTF-8
 URL: https://stevenpawley.github.io/colino
 BugReports: https://github.com/stevenpawley/colino/issues
 Depends:
-     R (>= 2.10),
-     recipes
+    R (>= 2.10),
+    recipes
 Imports:
-    generics,
-    tibble,
-    parsnip,
-    tune,
     dials,
+    dplyr,
+    generics,
+    magrittr,
+    parsnip,
+    pROC,
     purrr,
     rlang (>= 0.1.2),
-    magrittr,
-    dplyr,
     scales,
-    pROC,
-    stats
-RoxygenNote: 7.2.3
+    stats,
+    tibble,
+    tools,
+    tune
 Suggests: 
-    testthat,
-    roxygen2,
-    FSelectorRcpp,
-    praznik,
-    ranger,
     Boruta,
     care,
-    modeldata,
     covr,
-    FSinR
+    FSelectorRcpp,
+    FSinR,
+    modeldata,
+    praznik,
+    ranger,
+    roxygen2,
+    testthat
+Encoding: UTF-8
+RoxygenNote: 7.2.3
