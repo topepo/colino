@@ -130,17 +130,17 @@ validate_filter_data <- function(object, x, y) {
 # ------------------------------------------------------------------------------
 
 #' @export
-get_goal<- function(x, ...) {
-  UseMethod("get_goal")
+get_score_info <- function(x, att = "goal", ...) {
+  UseMethod("get_score_info")
 }
 
 #' @export
-get_goal.filter_method <- function(x, ...) {
-  x$goal
+get_score_info.filter_method <- function(x, att = "goal", ...) {
+  x[[att]]
 }
 
 #' @export
-get_goal.filter_results <- function(x, ...) {
-  attributes(x)$spec$goal
+get_score_info.filter_results <- function(x, att = "goal", ...) {
+  attributes(x)$spec[[att]]
 }
 
