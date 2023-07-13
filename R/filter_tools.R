@@ -4,26 +4,43 @@
 # Constructors
 
 new_filter_method <- function(name, label, goal = "maximize",
-                              inputs = "all", outputs = "all", pkgs = character(0)) {
+                              default_value = numeric(0),
+                              inputs = "all", outputs = "all",
+                              pkgs = character(0)) {
 
   # name: a keyword used in other steps (e.g. rf_imp or similar)
   if (!is.character(name) || length(name) != 1) {
     rlang::abort("'name' should be a 1 element character vector.")
   }
 
+  # ----------------------------------------------------------------------------
   # label: for printing ("random forest variable importance")
   if (!is.character(label) || length(label) != 1) {
     rlang::abort("'label' should be a 1 element character vector.")
   }
 
+  # ----------------------------------------------------------------------------
+
   goal <- rlang::arg_match0(goal, c("maximize", "minimize", "zero"))
 
+  # ----------------------------------------------------------------------------
+  # default_value: the value that should be used when the score can't be
+  # computed or as a filler later. It should be a value that would indicate
+  # that a variable should be included.
+  if (!is.numeric(default_value) || length(default_value) != 1) {
+    rlang::abort("'default_value' should be a 1 element numeric vector.")
+  }
+
+  # TODO should we just set this to +/-Inf based on the value of goal?
+
+  # ----------------------------------------------------------------------------
   # Specifications for inputs and output variables
   # Maybe these should be more specific (e.g. "factor", "numeric", etc).
   # Should also specify max levels for factor inputs or outputs?
   inputs  <- rlang::arg_match0(inputs,  c("all", "qualitative", "quantitative"))
   outputs <- rlang::arg_match0(outputs, c("all", "qualitative", "quantitative"))
 
+  # ----------------------------------------------------------------------------
   # pkgs: character string of external packages used to compute the filter
   if (!is.character(pkgs)) {
     rlang::abort("'pkgs' should be a character vector.")
@@ -36,6 +53,7 @@ new_filter_method <- function(name, label, goal = "maximize",
       name = make.names(name),
       label = tools::toTitleCase(label),
       goal = goal,
+      default_value = default_value,
       inputs = inputs,
       outputs = outputs,
       pkgs = pkgs
