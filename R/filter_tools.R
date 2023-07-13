@@ -4,7 +4,6 @@
 # Constructors
 
 new_filter_method <- function(name, label, goal = "maximize",
-                              default_value = numeric(0),
                               inputs = "all", outputs = "all",
                               pkgs = character(0)) {
 
@@ -22,16 +21,6 @@ new_filter_method <- function(name, label, goal = "maximize",
   # ----------------------------------------------------------------------------
 
   goal <- rlang::arg_match0(goal, c("maximize", "minimize", "zero"))
-
-  # ----------------------------------------------------------------------------
-  # default_value: the value that should be used when the score can't be
-  # computed or as a filler later. It should be a value that would indicate
-  # that a variable should be included.
-  if (!is.numeric(default_value) || length(default_value) != 1) {
-    rlang::abort("'default_value' should be a 1 element numeric vector.")
-  }
-
-  # TODO should we just set this to +/-Inf based on the value of goal?
 
   # ----------------------------------------------------------------------------
   # Specifications for inputs and output variables
@@ -53,7 +42,6 @@ new_filter_method <- function(name, label, goal = "maximize",
       name = make.names(name),
       label = tools::toTitleCase(label),
       goal = goal,
-      default_value = default_value,
       inputs = inputs,
       outputs = outputs,
       pkgs = pkgs

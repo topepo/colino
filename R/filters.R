@@ -8,7 +8,6 @@ filter_roc_auc <-
     name = "roc_auc",
     label = "Area under the ROC Curve",
     goal = "maximize",
-    default_value = Inf,
     inputs = "quantitative",
     outputs = "qualitative",
     pkgs = "pROC"
@@ -59,7 +58,6 @@ filter_mrmr <-
     name = "mrmr",
     label = "Minimum Redundancy Maximal Relevancy Filter",
     goal = "maximize",
-    default_value = Inf,
     inputs = "all",
     outputs = "qualitative",
     pkgs = "praznik"
@@ -104,7 +102,6 @@ filter_corr <-
     name = "corr",
     label = "Correlation Filter",
     goal = "maximize",
-    default_value = Inf,
     inputs = "quantitative",
     outputs = "quantitative"
   )
@@ -131,7 +128,6 @@ filter_rank_corr <-
     name = "rank_corr",
     label = "Rank Correlation Filter",
     goal = "maximize",
-    default_value = Inf,
     inputs = "quantitative",
     outputs = "quantitative"
   )
@@ -149,7 +145,6 @@ filter_max_diff <-
     name = "max_diff",
     label = "Maximum Group Difference",
     goal = "maximize",
-    default_value = Inf,
     inputs = "qualitative",
     outputs = "all"
   )
@@ -192,7 +187,6 @@ filter_rf_imp <-
     name = "rf_imp",
     label = "Random Forest Variable Importance",
     goal = "maximize",
-    default_value = Inf,
     inputs = "all",
     outputs = "all",
     pkgs = "ranger"
@@ -240,7 +234,6 @@ filter_info_gain <-
     name = "info_gain",
     label = "Information Gain",
     goal = "maximize",
-    default_value = Inf,
     inputs = "all",
     outputs = "qualitative",
     pkgs = "FSelectorRcpp"
@@ -285,7 +278,6 @@ filter_info_gain_ratio <-
     name = "info_gain_ratio",
     label = "Information Gain Ratio",
     goal = "maximize",
-    default_value = Inf,
     inputs = "all",
     outputs = "qualitative",
     pkgs = "FSelectorRcpp"
@@ -329,7 +321,6 @@ filter_mic <-
     name = "mic",
     label = "Maximal Information Coefficient",
     goal = "maximize",
-    default_value = Inf,
     inputs = "quantitative",
     outputs = "quantitative",
     pkgs = "minerva"
